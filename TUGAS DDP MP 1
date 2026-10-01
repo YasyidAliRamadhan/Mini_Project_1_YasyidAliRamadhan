@@ -1,0 +1,95 @@
+menu = [
+    ["Nasi Padang", "Makanan", 15000],
+    ["Mie Ayam", "Makanan", 12000],
+    ["Es Teh", "Minuman", 5000],
+    ["Es Jeruk", "Minuman", 5000],
+]
+
+while True:
+    print("\nMENU MAKANAN")
+    print("1. Lihat Menu")
+    print("2. Tambah Menu")
+    print("3. Ubah Menu")
+    print("4. Hapus Menu")
+    print("5. Selesai")
+
+    pilihan = input("Pilih Menu: ")
+
+    if pilihan == "1":
+        print("\nDAFTAR MENU")
+        for i in range(len(menu)):
+         print(i + 1, menu[i][0], "-", menu[i][1], "- Rp", menu[i][2])
+
+    elif pilihan == "2":
+         print("\nTAMBAH MENU")
+
+         nama = input("Nama Menu :")
+         kategori = input("Kategori :")
+         harga = input("Harga :")
+
+         if nama == "" or kategori == "" or harga == "":
+            print("Data tidak boleh kosong!")
+         else:
+            data_baru = [nama, kategori, harga]
+            menu = menu + [data_baru]
+
+            print("Menu Berhasil Ditambahkan.")
+
+    elif pilihan == "3":
+        print("\nUBAH MENU")
+        for i in range(len(menu)):
+            print(i + 1, menu[i][0], "-", menu[i][1], "- Rp", menu[i][2])
+
+            nomor = input("pilih menu :")
+            if nomor == "1":
+                posisi = 0
+            elif nomor == "2":
+                posisi = 1
+            elif nomor == "3":
+                posisi = 2
+            elif nomor == "4":
+                posisi = 3
+            else:
+                posisi = -1
+
+            if posisi == -1 or posisi >= (len(menu)):
+                print("Menu tidak tersedia") 
+            else:
+                nama = input("Nama Baru: ")
+                kategori = input("Kategori Baru: ")
+                harga = input("Harga Baru: ")
+
+                if nama == "" or kategori == "" or harga == "":
+                    print("Data Tidak Boleh Kosong!")
+                else:
+                    menu[posisi] = [nama, kategori, harga]
+                    print("Menu Berhasi Diubah.")
+
+    elif pilihan == "4":
+        print("\nHAPUS MENU")
+
+        for i in range (len(menu)):
+            print(i + 1, menu[i][0], "-", menu[i][1], "- Rp", menu[i][2])
+
+        nomor = input("Pilih Nomor Menu: ")
+        if nomor == "1":
+            posisi = 0
+        elif nomor == "2":
+            posisi = 1
+        elif posisi == "3":
+            posisi = 2
+        elif posisi == "4":
+            posisi = 3
+        else:
+            posisi = -1
+        if posisi == -1 or posisi >= (len(menu)):
+            print("Nomor Menu Tidak Tersedia!")
+        else:
+            menu = menu[:posisi] + menu[posisi + 1:]
+            print("Menu Berhasil Dihapus!")
+
+    elif pilihan == "5":
+        print("Selesai")
+        break
+    else:
+        print("Pilihan Tidak Tersedia!")
